@@ -1,0 +1,12 @@
+permutation 2 0
+ruiz_scaling_test 2 0
+cholesky 2 0
+schur_cg 2 0
+hybrid1 2 0
+hybrid2 2 0
+solver1 2 0
+solver2 2 0
+applier1 0 0
+---
+permutation
+applier1

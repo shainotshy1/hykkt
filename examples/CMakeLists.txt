@@ -85,6 +85,33 @@ set(test_solver2_args
   3
   10000.0)
 
+set(lpqpDIR 
+  ${PROJECT_SOURCE_DIR}/src/mats/lpqp/)
+
+set(test_applier1_args
+  ${lpqpDIR}/q1.mtx
+  ${lpqpDIR}/a1.mtx
+  ${lpqpDIR}/h1.mtx
+  ${lpqpDIR}/vin1.mtx
+  ${lpqpDIR}/exp1.mtx
+  1)
+
+set(test_applier2_args
+  ${lpqpDIR}/q2.mtx
+  ${lpqpDIR}/a2.mtx
+  ${lpqpDIR}/h2.mtx
+  ${lpqpDIR}/vin2.mtx
+  ${lpqpDIR}/exp2.mtx
+  2)
+
+set(test_applier3_args
+  ${lpqpDIR}/q3.mtx
+  ${lpqpDIR}/a3.mtx
+  ${lpqpDIR}/h3.mtx
+  ${lpqpDIR}/vin3.mtx
+  ${lpqpDIR}/exp3.mtx
+  1.7)
+
 if(HYKKT_TEST_WITH_BSUB)
   set(RUNCMD "jsrun" "-n" "1" "-g" "1")
 else()
@@ -128,6 +155,15 @@ add_test(NAME solver2
 add_executable(solver_driver_emulator cuSolver_driver_solver_emulator.cpp)
 target_link_libraries(solver_driver_emulator PUBLIC HyKKT::HyKKT)
 
+add_executable(operator_driver driver_operator_applier.cpp)
+target_link_libraries(operator_driver PUBLIC HyKKT::HyKKT)
+add_test(NAME applier1
+  COMMAND ${RUNCMD} $<TARGET_FILE:operator_driver> ${test_applier1_args})
+add_test(NAME applier2
+  COMMAND ${RUNCMD} $<TARGET_FILE:operator_driver> ${test_applier2_args})
+add_test(NAME applier3
+  COMMAND ${RUNCMD} $<TARGET_FILE:operator_driver> ${test_applier3_args})
+
 # install examples into user specified dir; default is /usr/local
 install(TARGETS perm_driver DESTINATION "${CMAKE_INSTALL_PREFIX}")
 install(TARGETS ruiz_driver DESTINATION "${CMAKE_INSTALL_PREFIX}")
@@ -136,6 +172,7 @@ install(TARGETS schur_cg_driver DESTINATION "${CMAKE_INSTALL_PREFIX}")
 install(TARGETS hybrid_driver DESTINATION "${CMAKE_INSTALL_PREFIX}")
 install(TARGETS solver_driver DESTINATION "${CMAKE_INSTALL_PREFIX}")
 install(TARGETS solver_driver_emulator DESTINATION "${CMAKE_INSTALL_PREFIX}")
+install(TARGETS operator_driver DESTINATION "${CMAKE_INSTALL_PREFIX}")
 
 
 if (HYKKT_USE_AMD)
@@ -150,6 +187,7 @@ if (HYKKT_USE_AMD)
     target_link_libraries(hybrid_driver PUBLIC AMD)
     target_link_libraries(solver_driver PUBLIC AMD)
     target_link_libraries(solver_driver_emulator PUBLIC AMD)
+    target_link_libraries(driver_operator_applier PUBLIC AMD)
   endif()
 else()
   message(STATUS "Not using SuiteSparse AMD")

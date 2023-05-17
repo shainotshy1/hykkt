@@ -1,0 +1,49 @@
+Start testing: May 16 23:47 UTC
+----------------------------------------------------------
+1/2 Testing: permutation
+1/2 Test: permutation
+Command: "/usr/local/cuda-11.6/bin/cuda-memcheck" "/home/gridmaticemployee/hykkt/examples/perm_driver"
+Directory: /home/gridmaticemployee/hykkt/examples
+"permutation" start time: May 16 23:47 UTC
+Output:
+----------------------------------------------------------
+========= CUDA-MEMCHECK
+========= This tool is deprecated and will be removed in a future release of the CUDA toolkit
+========= Please use the compute-sanitizer tool as a drop-in replacement
+========= Error: Could not find /home/gridmaticemployee/hykkt/examples/perm_driver
+========= CUDA-MEMCHECK
+========= This tool is deprecated and will be removed in a future release of the CUDA toolkit
+========= Please use the compute-sanitizer tool as a drop-in replacement
+========= ERROR SUMMARY: 0 errors
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Failed.
+"permutation" end time: May 16 23:47 UTC
+"permutation" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/2 Testing: applier1
+2/2 Test: applier1
+Command: "/usr/local/cuda-11.6/bin/cuda-memcheck" "/home/gridmaticemployee/hykkt/examples/driver_operator_applier" "/home/gridmaticemployee/hykkt/src/mats/lpqp//q1.mtx" "/home/gridmaticemployee/hykkt/src/mats/lpqp//a1.mtx" "/home/gridmaticemployee/hykkt/src/mats/lpqp//h1.mtx" "/home/gridmaticemployee/hykkt/src/mats/lpqp//vin1.mtx" "/home/gridmaticemployee/hykkt/src/mats/lpqp//exp1.mtx" "1"
+Directory: /home/gridmaticemployee/hykkt/examples
+"applier1" start time: May 16 23:47 UTC
+Output:
+----------------------------------------------------------
+========= CUDA-MEMCHECK
+========= This tool is deprecated and will be removed in a future release of the CUDA toolkit
+========= Please use the compute-sanitizer tool as a drop-in replacement
+========= Error: Could not find /home/gridmaticemployee/hykkt/examples/driver_operator_applier
+========= CUDA-MEMCHECK
+========= This tool is deprecated and will be removed in a future release of the CUDA toolkit
+========= Please use the compute-sanitizer tool as a drop-in replacement
+========= ERROR SUMMARY: 0 errors
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Failed.
+"applier1" end time: May 16 23:47 UTC
+"applier1" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: May 16 23:47 UTC

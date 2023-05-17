@@ -10,6 +10,7 @@ set(HYBRID_SRC
   CholeskyClass.cpp
   SpgemmClass.cpp
   HykktSolver.cpp
+  OperatorApplier.cpp
 )
 
 set(HYBRID_SRC_CUDA
@@ -25,7 +26,8 @@ set(header MMatrix.hpp
     SchurComplementConjugateGradient.hpp
     CholeskyClass.hpp
     SpgemmClass.hpp
-    HykktSolver.hpp)
+    HykktSolver.hpp
+    OperatorApplier.hpp)
 
 install(FILES ${header} DESTINATION ${CMAKE_INSTALL_PREFIX}/include)
 
@@ -37,7 +39,6 @@ target_link_libraries(hykkt_libs PUBLIC hykkt_cuda)
 install(TARGETS hykkt_libs EXPORT HyKKT-targets)
 
 add_library(HyKKT::HyKKT ALIAS hykkt_libs)
-
 
 if (HYKKT_USE_AMD)
   if(NOT AMD_LIBRARY)
