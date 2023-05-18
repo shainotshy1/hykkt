@@ -216,3 +216,26 @@ void compute_sum(cusparseHandle_t& handle,
     int nnz_b,
     cusparseMatDescr_t& descr_a,
     void** buffer_add);
+
+/**
+ * @brief Kernel wrapper for Q sparse product M = Sparse(Q + A'HA)
+ * 
+ * @param m, n, q_nnz, q_i, q_j, q_v, a_nnz, a_i, a_j, a_v - CSR information for matrix Q and A
+ * out - vector to store result
+ * 
+ * @pre Q is nxn SPD, A is mxn (m > n), H is nxn diagonal
+ * 
+ * @post applies sparse matrix product onto vector out
+*/
+void fun_q_sparse_product(int n, 
+    int m, 
+    int q_nnz, 
+    int* q_i, 
+    int* q_j, 
+    double* q_v, 
+    int a_nnz, 
+    int* a_i, 
+    int* a_j, 
+    double* a_v, 
+    double* h_v, 
+    double* out);    

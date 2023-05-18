@@ -53,7 +53,6 @@ OperatorApplier::OperatorApplier(int m,
     deleteOnDevice(buffer);
     createCsrMat(&a_desc_, m_, n_, a_nnz_, a_i_, a_j_, a_v_);
     createCsrMat(&a_t_desc_, n_, m_, a_nnz, a_t_i_, a_t_j_, a_t_v_);
-
 }
 
 /**

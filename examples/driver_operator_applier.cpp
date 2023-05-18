@@ -5,16 +5,6 @@
 #include "cuda_memory_utils.hpp"
 #include "MMatrix.hpp"
 
-template <typename T>
-void printVec(T* vec, int size) {
-  std::cout<<"[";
-  for (int i = 0; i < size; i++) {
-    std::string add = i == size - 1 ? "" : " ";
-    std::cout<<std::setprecision(20)<<vec[i]<<add;
-  }
-  std::cout<<"]"<<std::endl;
-}
-
 /**
   * @brief Driver file demonstrates use of Operator Applier S = tQ + A'HA
   *
@@ -120,6 +110,9 @@ int main(int argc, char *argv[])
         printf("Error at index %d\nRESULT: %f EXPECTED: %f DIFFERENCE: %f\n", i, val1, val2, val1 - val2);
         fails++;
       }
+    }
+    if (fails == 0) {
+      printf("Operator Applier test passed!\n");
     }
     //**************************FREEING MEMORY*************************//
     deleteOnDevice(d_h_v);
